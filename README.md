@@ -32,6 +32,8 @@ SmoothFlight puts a full flight-sim toolkit **inside the simulator**: open it fr
 
 It also comes with a **Package Launcher** that turns Community packages and scenery on or off by region, frees memory before the sim starts, and launches the simulator (directly or through Map Enhancement).
 
+The **Instructor**, **SimBrief**, **YouTube** and **Settings** pages are in both the MSFS panel and the X-Plane window.
+
 Everything runs **on your PC**. There is no account to create, and the AI features use a local model (Ollama), so your flights are never uploaded.
 
 ## Features
