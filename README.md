@@ -62,6 +62,16 @@ Everything runs **on your PC**. There is no account to create, and the AI featur
 | <img src="docs/assets/msfs-landing.png" alt="Landing rate pop-up" width="430"> | **Landing rate**: an animated pop-up the moment you touch down, with your rate of descent, G-force and a grade from *Butter* to *Hard*. |
 | <img src="docs/assets/msfs-flight.png" alt="Pilot log flight details" width="430"> | **Pilot log**: every flight logged automatically (aircraft, airports, times, highest altitude, landing). Open a flight to see the approach profile, touchdown details and AI remarks on what went well and what to improve. |
 
+### In X-Plane 12
+The same pages live in a native X-Plane window (**Plugins › SmoothFlight**).
+
+| | |
+|---|---|
+| <img src="docs/assets/xp-dashboard.png" alt="X-Plane dashboard" width="430"> | <img src="docs/assets/xp-chart.png" alt="X-Plane airport chart" width="430"> |
+| <img src="docs/assets/xp-simbrief.png" alt="X-Plane SimBrief page" width="430"> | <img src="docs/assets/xp-flight-detail.png" alt="X-Plane pilot log flight" width="430"> |
+
+All screenshots of both simulators are on the [website](https://pitchiluxe.github.io/smoothflight/#gallery).
+
 ### And more
 - **YouTube**: the latest videos from flight-sim channels (you choose the channels), played in a small window you can move anywhere while you cruise.
 - **ATC Radio**: follows the nearest airport; one click to listen on LiveATC.
