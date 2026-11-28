@@ -122,7 +122,11 @@
   /* Screenshot gallery */
   #gallery .chooser { margin-bottom: 28px; }
   .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
-  .gallery-grid[hidden] { display: none; }
+  .gallery-grid[hidden], .gallery-item[hidden] { display: none; }
+  .gallery-grid { grid-template-columns: minmax(0, 1fr); max-width: 1000px; margin-inline: auto; }
+  .gallery-controls { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:10px; margin:16px 0; }
+  .gallery-controls p { margin:0 6px; min-width:85px; text-align:center; }
+  .gallery-item img { object-fit:contain; background:#0b1220; }
   .gallery-item { margin: 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(115, 143, 189, .22); background: rgba(13, 21, 38, .7); transition: transform .25s, border-color .25s; }
   .gallery-item:hover { transform: translateY(-3px); border-color: rgba(217, 179, 109, .55); }
   .gallery-open { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
@@ -142,7 +146,7 @@
   <div class="wrap">
     <a class="brand" href="#top"><span class="mark" aria-hidden="true">&#x2708;&#xFE0E;</span><span class="name">Smooth<b>Flight</b></span></a>
     <nav aria-label="Site">
-      <a href="#sims">Simulators</a><a href="#features">Features</a><a href="#gallery">Screenshots</a><a href="#pilot-log">Pilot log</a><a href="#memory">Memory guard</a><a href="#faq">FAQ</a>
+      <a href="#sims">Simulators</a><a href="#features">Features</a><a href="#mission">Mission</a><a href="#gallery">Screenshots</a><a href="#pilot-log">Pilot log</a><a href="#memory">Memory guard</a><a href="#faq">FAQ</a>
       <a class="btn primary" href="#download">Download</a>
     </nav>
   </div>
@@ -152,7 +156,7 @@
   <div class="hero">
     <div class="wrap">
       <div class="hero-copy">
-        <span class="eyebrow"><i></i> Version <span class="js-version">2.4.1</span> &middot; free</span>
+        <span class="eyebrow"><i></i> Version <span class="js-version">2.5.0</span> &middot; free</span>
         <h1>Smoother flights in <span class="gold">X-Plane 12</span> and <span class="gold">MSFS</span>.</h1>
         <p class="lead">An in-sim performance dashboard, a smart scenery launcher and a memory guard that helps stop out-of-memory crashes. One design, both simulators.</p>
         <div class="cta">
@@ -225,12 +229,19 @@
     </div>
   </section>
 
+  <section id="mission" class="band">
+    <div class="wrap">
+      <div class="section-head"><span class="kicker">Mission</span><h2>Build a virtual flying career.</h2><p>Generate contracts, dispatch with SimBrief, track your flight, and review your landing in the career logbook. Spend your virtual earnings at Flightline Supply.</p></div>
+      <a class="btn primary" href="#gallery" id="show-mission-gallery">See Mission screenshots</a>
+    </div>
+  </section>
   <section id="gallery" class="band">
     <div class="wrap">
       <div class="section-head reveal"><span class="kicker">Screenshots</span><h2>Every page, in both simulators.</h2><p>The same navy-and-gold design in the MSFS toolbar panel and the X-Plane window. Click a picture to see it full size.</p></div>
-      <div class="chooser gallery-chooser" role="group" aria-label="Choose a simulator">
+      <div class="chooser gallery-chooser" role="group" aria-label="Choose a screenshot collection">
         <button type="button" data-gallery="msfs" aria-pressed="true">MSFS 2020 / 2024</button>
         <button type="button" data-gallery="xplane" aria-pressed="false">X-Plane 12</button>
+        <button type="button" data-gallery="mission" aria-pressed="false">Mission</button>
       </div>
       <div class="gallery-grid" data-sim="msfs">
         <figure class="gallery-item reveal"><button type="button" class="gallery-open" data-full="assets/msfs-dashboard.png" aria-label="Enlarge: Performance dashboard"><img src="assets/msfs-dashboard.png" width="1280" height="860" loading="lazy" alt="Performance dashboard: Live FPS, frame timing and system load."></button><figcaption><b>Performance dashboard</b><span>Live FPS, frame timing and system load.</span></figcaption></figure>
@@ -269,6 +280,22 @@
         <figure class="gallery-item reveal"><button type="button" class="gallery-open" data-full="assets/xp-memory.png" aria-label="Enlarge: Memory"><img src="assets/xp-memory.png" width="1280" height="860" loading="lazy" alt="Memory: RAM, graphics memory and background apps."></button><figcaption><b>Memory</b><span>RAM, graphics memory and background apps.</span></figcaption></figure>
         <figure class="gallery-item reveal"><button type="button" class="gallery-open" data-full="assets/xp-addons.png" aria-label="Enlarge: Add-ons"><img src="assets/xp-addons.png" width="1280" height="860" loading="lazy" alt="Add-ons: Turn plug-ins on or off."></button><figcaption><b>Add-ons</b><span>Turn plug-ins on or off.</span></figcaption></figure>
         <figure class="gallery-item reveal"><button type="button" class="gallery-open" data-full="assets/xp-settings.png" aria-label="Enlarge: Settings"><img src="assets/xp-settings.png" width="1280" height="860" loading="lazy" alt="Settings: Updates, AI model, SimBrief ID and YouTube channels."></button><figcaption><b>Settings</b><span>Updates, AI model, SimBrief ID and YouTube channels.</span></figcaption></figure>
+      </div>
+      <div class="gallery-grid" data-sim="mission" hidden>
+        <figure class="gallery-item"><button type="button" class="gallery-open" data-full="assets/mission-board.png" aria-label="Enlarge Mission Board"><img src="assets/mission-board.png" width="1280" height="860" loading="lazy" alt="Mission Board in the SmoothFlight dashboard"></button><figcaption><b>Mission Board</b><span>Browse generated contracts with airport, aircraft, and payout details.</span></figcaption></figure>
+        <figure class="gallery-item"><button type="button" class="gallery-open" data-full="assets/mission-briefing.png" aria-label="Enlarge Active Flight"><img src="assets/mission-briefing.png" width="1280" height="860" loading="lazy" alt="Active Flight in the SmoothFlight dashboard"></button><figcaption><b>Active Flight</b><span>Track the flight and view the SimBrief operational flight plan.</span></figcaption></figure>
+        <figure class="gallery-item"><button type="button" class="gallery-open" data-full="assets/mission-logbook.png" aria-label="Enlarge Career Logbook"><img src="assets/mission-logbook.png" width="1280" height="860" loading="lazy" alt="Career Logbook in the SmoothFlight dashboard"></button><figcaption><b>Career Logbook</b><span>Review landing metrics, payouts, and the AI debrief.</span></figcaption></figure>
+        <figure class="gallery-item"><button type="button" class="gallery-open" data-full="assets/mission-store.png" aria-label="Enlarge Flightline Supply"><img src="assets/mission-store.png" width="1280" height="860" loading="lazy" alt="Flightline Supply in the SmoothFlight dashboard"></button><figcaption><b>Flightline Supply</b><span>Browse flight gear, electronics, apparel, and meals.</span></figcaption></figure>
+        <figure class="gallery-item"><button type="button" class="gallery-open" data-full="assets/mission-apparel.png" aria-label="Enlarge All-weather pilot apparel"><img src="assets/mission-apparel.png" width="1280" height="860" loading="lazy" alt="All-weather pilot apparel in the SmoothFlight dashboard"></button><figcaption><b>All-weather pilot apparel</b><span>Shop pilot shirts and hats for hot, mild, cold, and wet conditions.</span></figcaption></figure>
+        <figure class="gallery-item"><button type="button" class="gallery-open" data-full="assets/mission-cart.png" aria-label="Enlarge Virtual checkout"><img src="assets/mission-cart.png" width="1280" height="860" loading="lazy" alt="Virtual checkout in the SmoothFlight dashboard"></button><figcaption><b>Virtual checkout</b><span>Review items and pay with the career balance.</span></figcaption></figure>
+        <figure class="gallery-item"><button type="button" class="gallery-open" data-full="assets/mission-receipt.png" aria-label="Enlarge Order receipt"><img src="assets/mission-receipt.png" width="1280" height="860" loading="lazy" alt="Order receipt in the SmoothFlight dashboard"></button><figcaption><b>Order receipt</b><span>See itemized purchases and the remaining virtual balance.</span></figcaption></figure>
+        <figure class="gallery-item"><button type="button" class="gallery-open" data-full="assets/mission-chart.png" aria-label="Enlarge Airport taxi map"><img src="assets/mission-chart.png" width="1280" height="860" loading="lazy" alt="Airport taxi map in the SmoothFlight dashboard"></button><figcaption><b>Airport taxi map</b><span>Follow the aircraft marker while taxiing and browse published procedures.</span></figcaption></figure>
+      </div>
+      <div class="gallery-controls" role="group" aria-label="Slideshow controls">
+        <button type="button" class="btn" id="gallery-prev">Previous</button>
+        <p id="gallery-position" aria-live="polite"></p>
+        <button type="button" class="btn" id="gallery-next">Next</button>
+        <button type="button" class="btn" id="gallery-play">Play slideshow</button>
       </div>
       <p class="caption">Sample flights and data shown. Created by Erick Omari.</p>
     </div>
@@ -324,7 +351,7 @@
 
   <section id="download">
     <div class="wrap">
-      <div class="section-head reveal"><span class="kicker">Download</span><h2>Pick your simulator.</h2><p>Free, with a one-click installer. Version <span class="js-version">2.4.1</span>.</p></div>
+      <div class="section-head reveal"><span class="kicker">Download</span><h2>Pick your simulator.</h2><p>Free, with a one-click installer. Version <span class="js-version">2.5.0</span>.</p></div>
       <div class="chooser" role="group" aria-label="Choose a simulator">
         <button type="button" data-show="xplane" aria-pressed="false">X-Plane 12</button>
         <button type="button" data-show="msfs" aria-pressed="false">MSFS 2020 / 2024</button>
@@ -333,13 +360,13 @@
       <div class="downloads">
         <article class="card download" data-product="xplane">
           <h3>SmoothFlight for X-Plane 12</h3>
-          <div class="row"><span class="size js-size-xplane">Plug-in + launcher &middot; about 0.5 MB</span><a class="btn primary js-link-xplane" href="https://github.com/pitchiluxe/smoothflight/releases/download/v2.4.1/SmoothFlight-XPlane12-2.4.1.zip">Download for X-Plane</a></div>
+          <div class="row"><span class="size js-size-xplane">Plug-in + companion + launcher</span><a class="btn primary js-link-xplane" href="https://github.com/pitchiluxe/smoothflight/releases/download/v2.5.0/SmoothFlight-XPlane12-2.5.0.zip">Download for X-Plane</a></div>
           <ol><li>Close X-Plane.</li><li>Unzip the download and double-click <b>Install-SmoothFlight-XPlane.exe</b>.</li><li>Start X-Plane from the new desktop shortcut and open <b>Plugins &rsaquo; SmoothFlight</b>.</li></ol>
           <p class="req">Windows 10/11 (64-bit) and X-Plane 12. XPlane Map Enhancement is optional.</p>
         </article>
         <article class="card download" data-product="msfs">
           <h3>SmoothFlight for MSFS 2020 &amp; 2024</h3>
-          <div class="row"><span class="size js-size-msfs">Panel + companion + launcher &middot; about 10 MB</span><a class="btn primary js-link-msfs" href="https://github.com/pitchiluxe/smoothflight/releases/download/v2.4.1/SmoothFlight-MSFS-2.4.1.zip">Download for MSFS</a></div>
+          <div class="row"><span class="size js-size-msfs">Panel + companion + launcher</span><a class="btn primary js-link-msfs" href="https://github.com/pitchiluxe/smoothflight/releases/download/v2.5.0/SmoothFlight-MSFS-2.5.0.zip">Download for MSFS</a></div>
           <ol><li>Close the simulator.</li><li>Unzip and double-click <b>Install-SmoothFlight-MSFS.exe</b>. It finds MSFS 2020 and/or 2024 (Store, Game Pass or Steam).</li><li>Start the companion from the desktop, then open SmoothFlight from the sim's toolbar.</li></ol>
           <p class="req">Windows 10/11 (64-bit) and MSFS 2020 and/or 2024. Nothing else to install.</p>
         </article>
@@ -362,7 +389,7 @@
 
 <footer>
   <div class="wrap">
-    <span><strong>SmoothFlight</strong> &middot; Created by <strong>Erick Omari</strong> &middot; version <span class="js-version">2.4.1</span></span>
+    <span><strong>SmoothFlight</strong> &middot; Created by <strong>Erick Omari</strong> &middot; version <span class="js-version">2.5.0</span></span>
     <span><a href="https://github.com/pitchiluxe/smoothflight/releases">All releases</a> &middot; Not affiliated with Laminar Research or Microsoft.</span>
   </div>
 </footer>
@@ -384,18 +411,59 @@
 
   // Reveal sections as they scroll into view.
 
-  // Screenshot gallery: simulator switch and a full-size viewer.
-  var galleryButtons = Array.prototype.slice.call(document.querySelectorAll("[data-gallery]"));
-  galleryButtons.forEach(function (b) {
-    b.addEventListener("click", function () {
-      var which = b.getAttribute("data-gallery");
-      galleryButtons.forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
-      document.querySelectorAll(".gallery-grid").forEach(function (g) {
-        g.hidden = g.getAttribute("data-sim") !== which;
-        g.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("shown"); });
+
+  // Keep one slide visible in the selected collection.
+  var galleryButtons = Array.from(document.querySelectorAll("[data-gallery]"));
+  var galleryGroups = Array.from(document.querySelectorAll(".gallery-grid"));
+  var gallery = document.getElementById("gallery");
+  var slideshow = { group: "msfs", index: 0, timer: null };
+  var playButton = document.getElementById("gallery-play");
+  function renderGallery(step) {
+    galleryGroups.forEach(function (group) {
+      group.hidden = group.getAttribute("data-sim") !== slideshow.group;
+      if (group.hidden) return;
+      var slides = Array.from(group.querySelectorAll(".gallery-item"));
+      slideshow.index = (slideshow.index + step + slides.length) % slides.length;
+      slides.forEach(function (slide, index) {
+        slide.hidden = index !== slideshow.index;
+        if (!slide.hidden) slide.classList.add("shown");
       });
+      document.getElementById("gallery-position").textContent = (slideshow.index + 1) + " of " + slides.length;
     });
+  }
+  function stopSlideshow() {
+    if (slideshow.timer !== null) window.clearInterval(slideshow.timer);
+    slideshow.timer = null;
+    playButton.textContent = "Play slideshow";
+  }
+  function selectGallery(group) {
+    stopSlideshow();
+    slideshow.group = group;
+    slideshow.index = 0;
+    galleryButtons.forEach(function (button) {
+      button.setAttribute("aria-pressed", String(button.getAttribute("data-gallery") === group));
+    });
+    renderGallery(0);
+  }
+  galleryButtons.forEach(function (button) {
+    button.addEventListener("click", function () { selectGallery(button.getAttribute("data-gallery")); });
   });
+  document.getElementById("show-mission-gallery").addEventListener("click", function () { selectGallery("mission"); });
+  document.getElementById("gallery-prev").addEventListener("click", function () { stopSlideshow(); renderGallery(-1); });
+  document.getElementById("gallery-next").addEventListener("click", function () { stopSlideshow(); renderGallery(1); });
+  playButton.addEventListener("click", function () {
+    if (slideshow.timer !== null) { stopSlideshow(); return; }
+    playButton.textContent = "Pause slideshow";
+    slideshow.timer = window.setInterval(function () { renderGallery(1); }, 5000);
+  });
+  gallery.addEventListener("keydown", function (event) {
+    if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+      event.preventDefault();
+      stopSlideshow();
+      renderGallery(event.key === "ArrowRight" ? 1 : -1);
+    }
+  });
+  renderGallery(0);
   var viewer = document.createElement("div");
   viewer.className = "viewer"; viewer.hidden = true;
   var viewerImg = document.createElement("img"); viewerImg.alt = "";
@@ -403,7 +471,7 @@
   viewer.addEventListener("click", function () { viewer.hidden = true; viewerImg.removeAttribute("src"); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") viewer.click(); });
   document.querySelectorAll(".gallery-open").forEach(function (b) {
-    b.addEventListener("click", function () { viewerImg.src = b.getAttribute("data-full"); viewerImg.alt = b.querySelector("img").alt; viewer.hidden = false; });
+    b.addEventListener("click", function () { stopSlideshow(); viewerImg.src = b.getAttribute("data-full"); viewerImg.alt = b.querySelector("img").alt; viewer.hidden = false; });
   });
   var io = "IntersectionObserver" in window ? new IntersectionObserver(function (entries) {
     entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("shown"); io.unobserve(e.target); } });
@@ -421,7 +489,7 @@
       var link = document.querySelector(".js-link-" + key);
       if (link) link.href = asset.browser_download_url;
       var size = document.querySelector(".js-size-" + key);
-      if (size) size.textContent = (key === "xplane" ? "Plug-in + launcher" : "Panel + companion + launcher") + " · " + (asset.size / 1048576).toFixed(1) + " MB";
+      if (size) size.textContent = (key === "xplane" ? "Plug-in + companion + launcher" : "Panel + companion + launcher") + " · " + (asset.size / 1048576).toFixed(1) + " MB";
     });
   }).catch(function () { });
 }());
